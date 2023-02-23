@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'extentions.dart';
+import 'router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      routes: AppRouter.routes,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -31,13 +33,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  final int _counter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -65,9 +61,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        onPressed: () {
+          Navigator.of(context).pushNamed('map');
+        },
+        tooltip: 'Map',
+        child: const Icon(Icons.map),
       ),
     );
   }
